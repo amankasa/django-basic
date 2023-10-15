@@ -1,3 +1,34 @@
-<h1>I am directed through templates</h1>
+{% extends "base.html" %}
+{% block title%}Home Page{% endblock title%}
 
-<p>I'm in the home page</p>
+{% block body %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for task in tasks %}
+    <tr>
+
+      <td scope="row">{{forloop.counter}} </td>
+      <td>{{task.name}} </td>
+      <td>
+        {{task.description}}
+      </td>
+      <td>
+      {% if task.is_completed %}
+      <span class="text-success">Done</span>
+      {% else %}
+      <span class="text-danger">Pending</span>
+      {% endif %}
+      </td>
+    </tr>
+  {% endfor %}    
+  </tbody>
+</table>
+{% endblock body %}
