@@ -8,8 +8,32 @@ def home(request):
 
 def contact(request):
     # return HttpResponse("Contact Please")
-    return render(request,'contact.html')
+    contact={
+        "users":[
+            {
+                'name':'ram',
+                'age':12,
+            },
+            {
+        'name': 'sita',
+        'age': 25,
+    },
+    {
+        'name': 'lakshman',
+        'age': 22,
+    },
+    
+        ]
+    }
+    return render(request,'contact.html',contact)
 
 def about(request):
     # return HttpResponse("About Us")
     return render(request,'about.html')
+
+def create(request):
+    if request.method=="POST":
+        name=request.POST
+        return HttpResponse()
+    return render(request,'contact.html')
+
