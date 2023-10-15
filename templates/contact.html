@@ -3,32 +3,5 @@
 Contact 
 {% endblock title %}
 {% block body %}
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Age</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for user in users %}
-    <tr>
 
-      <td scope="row">{{forloop.counter}} </td>
-      <td>{{user.name}} </td>
-      <td>
-        {% if user.age < 13 %}
-        Child
-        {% elif user.age < 18 %}
-        Teen
-        {% else %}
-        Adult
-        {% endif %}
-       {% comment %} {{user.age}}  {% endcomment %}
-      </td>
-    </tr>
-  {% endfor %}    
-  </tbody>
-</table>
 {% endblock body %}

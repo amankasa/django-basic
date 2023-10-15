@@ -1,31 +1,18 @@
 from django.shortcuts import render, HttpResponse
-
+from .models import *
 # Create your views here.
 
 def home(request):
     # return HttpResponse("Hello World")
-    return render(request,'index.html')
+    tasks=Task.objects.all()
+    contact={
+       "tasks":tasks
+    }
+    return render(request,'index.html',contact)
 
 def contact(request):
-    # return HttpResponse("Contact Please")
-    contact={
-        "users":[
-            {
-                'name':'ram',
-                'age':12,
-            },
-            {
-        'name': 'sita',
-        'age': 25,
-    },
-    {
-        'name': 'lakshman',
-        'age': 22,
-    },
-    
-        ]
-    }
-    return render(request,'contact.html',contact)
+    return HttpResponse("Contact Please")
+  
 
 def about(request):
     # return HttpResponse("About Us")
@@ -33,7 +20,15 @@ def about(request):
 
 def create(request):
     if request.method=="POST":
-        name=request.POST
-        return HttpResponse()
-    return render(request,'contact.html')
+        return HttpResponse("this is a post request")
+    # context={}
+    # if request.method=="POST":
+    #     name=request.POST.get("name")
+    #     description=request.POST.get(name)
+    #     if name is None and description is None:
+    #         context={
+    #             'error':"Both fields are required"
+    #         }
+    #     return HttpResponse()  
+    return render(request,'create.html')
 
