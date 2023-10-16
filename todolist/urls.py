@@ -22,5 +22,9 @@ urlpatterns = [
     path('',views.home),
     path('contact-us',views.contact ),
     path('about-us', views.about),
-    path('create', views.create)
+    path('create', views.create),
+    path('mark/<pk>',views.mark),
+    path('delete/<pk>',views.delete),
+    path('edit/<pk>',views.edit),
+    path('update/<pk>',views.update)
 ]

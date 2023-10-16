@@ -10,14 +10,14 @@ Create Page
     {{error}}
     </div>
 {% endif %}
-<form method="POST" action="/create">
+<form method="POST" action="/update/{{task.pk}}">
 {% csrf_token %}
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Name</label>
-        <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+        <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" value="{{task.name}}">
     </div>
         <div class="form-floating mb-3">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description"></textarea>
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="description">{{task.description}}</textarea>
             <label for="floatingTextarea2">Description</label>
         </div>
     <button type="submit" class="btn btn-primary">Submit</button>
