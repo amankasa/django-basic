@@ -26,5 +26,6 @@ urlpatterns = [
     path('mark/<pk>',views.mark),
     path('delete/<pk>',views.delete),
     path('edit/<pk>',views.edit),
-    path('update/<pk>',views.update)
+    path('update/<pk>',views.update),
+    path('unmark/<pk>',views.unmark),
 ]

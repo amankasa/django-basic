@@ -4,10 +4,17 @@ from .models import *
 
 def home(request):
     # return HttpResponse("Hello World")
-    tasks=Task.objects.all()
+    obj=Task.objects
+    tasks=obj.all()
+    total_task=tasks.count
+    completed_tasks=obj.filter(is_completed=True).count()
+    incomplete_task=obj.filter(is_completed=False).count()
     contact={
-       "tasks":tasks
-    }
+       "tasks":tasks,
+       "total_task":total_task,
+       "completed_task":completed_tasks,
+       "incomplete_task":incomplete_task,
+        }
     return render(request,'index.html',contact)
 
 def contact(request):
@@ -69,5 +76,11 @@ def update(request,pk):
     task=Task.objects.get(pk=pk)
     task.name=name
     task.description=description
+    task.save()
+    return redirect("/")
+
+def unmark(request,pk):
+    task=Task.objects.get(pk =pk)
+    task.is_completed=False
     task.save()
     return redirect("/")

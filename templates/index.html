@@ -2,6 +2,10 @@
 {% block title%}Home Page{% endblock title%}
 
 {% block body %}
+<div class="container">
+<h1>Total Tasks {{total_task}}</h1>
+<h2>Total Completed Tasks {{completed_task}}</h2>
+<h2>Total Incomplete Tasks {{incomplete_task}}</h2>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -31,9 +35,11 @@
         <a href="edit/{{task.id}}" class="btn btn-primary">Edit</a>
         <a href="delete/{{task.id}}" class="btn btn-danger">Delete</a>
         <a href="mark/{{task.id}}" class="btn btn-success">Mark</a>
+        <a href="unmark/{{task.id}}" class="btn btn-danger">Unmark</a>
       </td>
     </tr>
   {% endfor %}    
   </tbody>
 </table>
+</div>
 {% endblock body %}
